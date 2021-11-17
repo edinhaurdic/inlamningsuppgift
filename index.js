@@ -7,6 +7,8 @@ let lowCard;
 const cardDiv = document.getElementById("cardDiv");
 const newGameButt=document.getElementById("newGame");
 const drawCardButt = document.getElementById("drawCard");
+const higherCardButt=document.querySelector(".highCard");
+const lowerCardButt=document.querySelector(".lowCard");
 
 
 
@@ -37,6 +39,39 @@ newGameButt.addEventListener("click", async () => {
   console.log(drawCard);
 });
 
+higherCardButt.addEventListener("click", async () => {
+  const res = await fetch(`https://deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=1`);
+  const data = await res.json();
+  getValue(data);
+  highCard = data.cards[0].value;
+  const cImage = document.createElement("img");
+  const cNumber = document.createElement("h1");
+  cNumber.innerText = data.cards[0].value;
+  cImage.src = data.cards[0].image;
+  cImage.alt = data.cards[0].value;
+  cardDiv.appendChild(cImage);
+  cardDiv.appendChild(cNumber);
+  console.log(data.cards[0]);
+  console.log(highCard);
+});
+
+lowerCardButt.addEventListener("click", async () => {
+  const res = await fetch(`https://deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=1`);
+  const data = await res.json();
+  getValue(data);
+  lowCard = data.cards[0].value;
+  const cImage = document.createElement("img");
+  const cNumber = document.createElement("h1");
+  cNumber.innerText = data.cards[0].value;
+  cImage.src = data.cards[0].image;
+  cImage.alt = data.cards[0].value;
+  cardDiv.appendChild(cImage);
+  cardDiv.appendChild(cNumber);
+  console.log(data.cards[0]);
+  console.log(lowCard);
+});
+
+
 //omvandla till siffror
 function getValue(data) {
   switch (data.cards[0].value) {
@@ -54,14 +89,4 @@ function getValue(data) {
     default:
       data.cards[0].value = Number(data.cards[0].value);
   }
-}
-
-alert("Welcome mmto Jack Vegas\n Type 'H' for Higher and 'L' for Lower.");
-
-function playing(){
-let guess= prompt('High or low than ${drawCard}');
-if((drawCard>low&& guess ==="L")||(drawCard< high && guess === "H")){
-alert('Correct you win')
-};
-
 }
