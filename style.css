@@ -1,0 +1,22 @@
+body{
+background-color:rgb(11, 197, 11);
+}
+.newGamebtn{
+display: flex;
+justify-content: center;
+align-items: right;
+background-color: red;
+border-radius: 0.5rem;
+border-color: rgb(222, 135, 135);
+color: black;
+position: relative;
+}
+
+.welcome{
+display: flex;
+align-items: center;
+justify-content: center;
+color: red;
+flex-direction: column;
+margin-top: 3rem;
+}
