@@ -9,8 +9,9 @@ background-color: red;
 border-radius: 0.5rem;
 border-color: rgb(222, 135, 135);
 color: black;
-position: relative;
+font-size: 25px;
 }
+
 
 .welcome{
 display: flex;
@@ -19,4 +20,14 @@ justify-content: center;
 color: red;
 flex-direction: column;
 margin-top: 3rem;
+font-size: 50px;
+}
+
+.hide {
+display: none;
+}
+  
+.playerH{
+	font-size: 100px;
+	color: red;
 }
